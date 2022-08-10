@@ -6,24 +6,30 @@ public class Movement : MonoBehaviour
 {
     public float transitionSpeedHorizontal;
     public float transitionSpeedVertical;
+    public Rigidbody Player;
+
+    void Start()
+    {
+        Player = GetComponent<Rigidbody>();
+    }
+
     void Update()
 {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.left * transitionSpeedHorizontal, ForceMode.VelocityChange);            
+                Player.AddForce(Vector3.left * transitionSpeedHorizontal, ForceMode.VelocityChange);
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.right * transitionSpeedHorizontal, ForceMode.VelocityChange);            
+                Player.AddForce(Vector3.right * transitionSpeedHorizontal, ForceMode.VelocityChange);            
             }
-
             if (Input.GetKey(KeyCode.UpArrow))
-            {               
-                GetComponent<Rigidbody>().AddForce(Vector3.up * transitionSpeedVertical, ForceMode.VelocityChange);  
+            {
+                Player.AddForce(Vector3.up * transitionSpeedVertical, ForceMode.VelocityChange);  
             }
             if (Input.GetKey(KeyCode.DownArrow))
-            {               
-                GetComponent<Rigidbody>().AddForce(Vector3.down * transitionSpeedVertical, ForceMode.VelocityChange);
+            {
+                Player.AddForce(Vector3.down * transitionSpeedVertical, ForceMode.VelocityChange);
             }
     }
 }

@@ -10,17 +10,23 @@ public class Obstacle : MonoBehaviour
     public static bool needToGenerate;
     private int obstacleCount = 0;
     public static float boundary = 13f;
-    public static int score = 0;
     private int blocksCreated = 0;
     public static float generateNewAt = 5f;
     private int total = 0;
     private int index = 1;
+    private UIManager _uiManager;
     Random rnd = new System.Random();
     List<float> locations = new List<float>();
 
     // Start is called before the first frame update
     void Start()
     {
+        _uiManager = GameObject.Find("Score").GetComponent<UIManager>();
+        if (_uiManager == null)
+        {
+            Debug.Log("Null ui manager");
+        }
+
         completeList();
         generate();
     }
@@ -69,12 +75,17 @@ public class Obstacle : MonoBehaviour
     {
         if (needToGenerate)
         {
-            Obstacle.score++;
+            if(_uiManager != null)
+            {
+                _uiManager.updateScore();
+            }
             generate();
             total += blocksCreated;
             needToGenerate = false;
             blocksCreated = 0;
         }
+
+        
     }
 
     void FixedUpdate()

@@ -352,6 +352,7 @@
 "Assets/Scripts/BlockMovement.cs"
 "Assets/Scripts/Movement.cs"
 "Assets/Scripts/Obstacle.cs"
+"Assets/Scripts/UIManager.cs"
 "Assets/Scripts/WallCollision.cs"
 -langversion:9.0
 
